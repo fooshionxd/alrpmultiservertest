@@ -14,19 +14,13 @@ if [ -z "${LICENCE_KEY}" ]; then
   exit 1
 fi
 
-if [ -z "${UDP}" ]; then
-  echo "UDP not found"
-  exit 1
-fi
-
-if [ -z "${TCP}" ]; then
-  echo "TCP not found"
+if [ -z "${SERVERNUMBER}" ]; then
+  echo "Server number not clarified"
   exit 1
 fi
 
 exec /opt/cfx-server/FXServer \
        +set citizen_dir /opt/cfx-server/citizen/ \
-       +exec /config/server.cfg $@ \
-       +set sv_licenseKey ${LICENCE_KEY} \
-       endpoint_add_tcp "${UDP}" \
-       endpoint_add_udp "${TCP}"
+       +exec /config/server${SERVERNUMBER}.cfg $@ \
+       +set sv_licenseKey ${LICENCE_KEY} 
+       
