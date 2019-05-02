@@ -1,5 +1,5 @@
-ARG FIVEM_NUM=1141
-ARG FIVEM_VER=1141-8cded82ebff9053946e778016cb496acd0e250b0
+ARG FIVEM_NUM=1056
+ARG FIVEM_VER=1056-07194cf7b489d61b1400c516aab75b73eb69068f
 ARG DATA_VER=3c6a2b6859dadc8bb2497399306dc58fae8c74d7
 
 FROM spritsail/alpine:3.9 as builder
@@ -14,7 +14,12 @@ RUN wget -O- http://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/$
             --exclude alpine/dev --exclude alpine/proc \
             --exclude alpine/run --exclude alpine/sys \
  && mkdir -p /output/opt/cfx-server-data \
+ && wget -O- http://github.com/citizenfx/cfx-server-data/archive/${DATA_VER}.tar.gz \
+        | tar xz --strip-components=1 -C opt/cfx-server-data \
+    \
+ && apk -p $PWD add tini
 
+ADD server.cfg opt/cfx-server-data
 ADD entrypoint usr/bin/entrypoint
 
 RUN chmod +x /output/usr/bin/entrypoint
