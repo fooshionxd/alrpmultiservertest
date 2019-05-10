@@ -21,7 +21,7 @@ fi
 
 exec /opt/cfx-server/FXServer \
        +set citizen_dir /opt/cfx-server/citizen/ \
-       +exec /config/permissions.cfg $@ \
        +exec /config/server${SERVERNUMBER}.cfg $@ \
+       +exec /config/permissions.cfg $@ \
        +set sv_licenseKey ${LICENCE_KEY} 
        
