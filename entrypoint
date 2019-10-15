@@ -19,9 +19,9 @@ if [ -z "${SERVERNUMBER}" ]; then
   exit 1
 fi
 
-exec /opt/cfx-server/FXServer \
-       +set citizen_dir /opt/cfx-server/citizen/ \
-       +exec /config/server${SERVERNUMBER}.cfg $@ \
-       +exec /config/permissions.cfg $@ \
+exec /home/devserver/fx-server-data \
+       +set citizen_dir /home/devserver/fx-server \
+       +exec /home/devserver/fx-server-data/server${SERVERNUMBER}.cfg $@ \
+       +exec /home/devserver/fx-server-data/permissions.cfg $@ \
        +set sv_licenseKey ${LICENCE_KEY} 
        
