@@ -1,8 +1,8 @@
-ARG FIVEM_NUM=1552
-ARG FIVEM_VER=1552-8e2468eb15caacdf739ff893d7e2cd83dc6f6e0a
-ARG DATA_VER=3c6a2b6859dadc8bb2497399306dc58fae8c74d7
+ARG FIVEM_NUM=1971
+ARG FIVEM_VER=1971-fbd5c11df14693e9be8a9b86b02689abfc790f69
+ARG DATA_VER=2bde7889b4593d842e911827a33294211f40de93
 
-FROM spritsail/alpine:3.9 as builder
+FROM spritsail/alpine:3.10 as builder
 
 ARG FIVEM_VER
 ARG DATA_VER
@@ -44,10 +44,9 @@ LABEL maintainer="Spritsail <fivem@spritsail.io>" \
 COPY --from=builder /output/ /
 
 WORKDIR /config
-EXPOSE 30120 30121 30122 30123 30124 30125 30126 30127
+EXPOSE 30120
 
 # Default to an empty CMD, so we can use it to add seperate args to the binary
 CMD [""]
 
 ENTRYPOINT ["/sbin/tini", "--", "/usr/bin/entrypoint"]
-
