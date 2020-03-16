@@ -1,4 +1,5 @@
 #!/bin/sh
+
 if ! find . -mindepth 1 | read; then
   echo -e "Creating default configs...\n"
   cp -r /opt/cfx-server-data/* /config
@@ -14,13 +15,8 @@ if [ -z "${LICENCE_KEY}" ]; then
   exit 1
 fi
 
-if [ -z "${SERVERNUMBER}" ]; then
-  echo "Server number not clarified"
-  exit 1
-fi
-
 exec /opt/cfx-server/FXServer \
        +set citizen_dir /opt/cfx-server/citizen/ \
-       +exec /config/server${SERVERNUMBER}.cfg $@ \
-       +exec /config/permissions.cfg $@ \
-       +set sv_licenseKey ${LICENCE_KEY} 
+       +exec /config/server.cfg \
+       +set sv_licenseKey ${LICENCE_KEY} \
+       $@
