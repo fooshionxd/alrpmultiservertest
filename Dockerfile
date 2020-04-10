@@ -1,6 +1,6 @@
-ARG FIVEM_NUM=2270
-ARG FIVEM_VER=2270-c1235ffda756db0f35f3b583b831a32cf0cb4461
-ARG DATA_VER=c1235ffda756db0f35f3b583b831a32cf0cb4461
+ARG FIVEM_NUM=2328
+ARG FIVEM_VER=2328-2a90ab14206219b9491643261aecc4d0b62c9380
+ARG DATA_VER=2a90ab14206219b9491643261aecc4d0b62c9380
 
 FROM spritsail/alpine:3.10 as builder
 
@@ -32,8 +32,8 @@ ARG FIVEM_VER
 ARG FIVEM_NUM
 ARG DATA_VER
 
-LABEL maintainer="Spritsail <fivem@spritsail.io>" \
-      org.label-schema.vendor="Spritsail" \
+LABEL maintainer="Fusion" \
+      org.label-schema.vendor="Foosh" \
       org.label-schema.name="FiveM" \
       org.label-schema.url="https://fivem.net" \
       org.label-schema.description="FiveM is a modification for Grand Theft Auto V enabling you to play multiplayer on customized dedicated servers." \
